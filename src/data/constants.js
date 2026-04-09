@@ -7,7 +7,7 @@ export const C = {
 };
 
 export const SKILL_LEVELS = [
-  { id: "training",   label: "In My 40-Hour Training",             desc: "Learning ABA/RBT concepts for the first time", icon: "\u{1F4D6}" },
+  { id: "training",   label: "40 Hour Training",                   desc: "Learning ABA/RBT concepts for the first time", icon: "\u{1F4D6}" },
   { id: "competency", label: "Preparing for Competency Assessment", desc: "Training complete \u2014 getting ready for evaluation", icon: "\u{1F3AF}" },
   { id: "exam",       label: "Preparing for RBT Exam",              desc: "Competency passed \u2014 studying for certification", icon: "\u{1F3C6}" },
   { id: "refresher",  label: "Refresher / Recertification",         desc: "Already certified \u2014 brushing up or recertifying", icon: "\u{1F504}" },
