@@ -31,6 +31,25 @@ export const applyDeltas = (mastery, deltas, scale = 1.8) => {
 export const avgMastery = (m) =>
   Math.round(Object.values(m).reduce((a, b) => a + b, 0) / DOMAINS.length);
 
+// ── Skill level progression ───────────────────────────────────────────────────
+export const SKILL_ORDER = ["training", "competency", "exam", "refresher"];
+
+export const nextSkillLevel = (current) => {
+  const i = SKILL_ORDER.indexOf(current);
+  return i >= 0 && i < SKILL_ORDER.length - 1 ? SKILL_ORDER[i + 1] : null;
+};
+
+// Returns the next level id if user should be prompted to level up, else null.
+// Triggers when overall mastery hits 70% and user hasn't already dismissed the
+// prompt for their current level.
+export const shouldSuggestLevelUp = (ud) => {
+  if (!ud) return null;
+  const next = nextSkillLevel(ud.skillLevel);
+  if (!next) return null;
+  if (ud.levelUpDismissedFor === ud.skillLevel) return null;
+  return avgMastery(ud.mastery) >= 70 ? next : null;
+};
+
 // ── JSON parse helper ─────────────────────────────────────────────────────────
 export const safeJSON = (s) => {
   try {

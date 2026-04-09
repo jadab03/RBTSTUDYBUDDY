@@ -14,12 +14,14 @@ import Scenarios from "./components/Scenarios.jsx";
 import Roadmap from "./components/Roadmap.jsx";
 import Progress from "./components/Progress.jsx";
 import MasteryTracker from "./components/MasteryTracker.jsx";
+import LevelUpModal from "./components/LevelUpModal.jsx";
 
 export default function App() {
   const [screen, setScreen] = useState("auth");
   const [ud, setUd] = useState(null);
   const [view, setView] = useState("dashboard");
   const [saving, setSaving] = useState(false);
+  const [levelUp, setLevelUp] = useState(null); // { mode: "manual"|"suggested", suggestedLevel? }
 
   const save = (data) => { setSaving(true); saveUser(data.username, data); setSaving(false); };
 
@@ -108,7 +110,32 @@ export default function App() {
 
   // ── Roadmap save ──────────────────────────────────────────────────────────
   const onRoadmapSave = (rm, ed) => {
-    setUd((prev) => { const next = { ...prev, roadmap: rm, examDate: ed }; save(next); return next; });
+    setUd((prev) => { const next = { ...prev, roadmap: rm, examDate: ed, roadmapLevel: prev.skillLevel }; save(next); return next; });
+  };
+
+  // ── Skill level change ────────────────────────────────────────────────────
+  const onChangeLevel = (newLevel) => {
+    setUd((prev) => {
+      const label = SKILL_LEVELS.find((s) => s.id === newLevel)?.label || newLevel;
+      const nh = [
+        ...(prev.sessionHistory || []),
+        { type: "level change", date: today(), summary: `Moved to ${label}`, xpGained: 0 },
+      ];
+      const next = { ...prev, skillLevel: newLevel, levelUpDismissedFor: null, sessionHistory: nh };
+      save(next);
+      return next;
+    });
+    setLevelUp(null);
+  };
+
+  // ── Level-up prompt dismiss ───────────────────────────────────────────────
+  const onDismissLevelUp = () => {
+    setUd((prev) => {
+      const next = { ...prev, levelUpDismissedFor: prev.skillLevel };
+      save(next);
+      return next;
+    });
+    setLevelUp(null);
   };
 
   // ── Auth handler ──────────────────────────────────────────────────────────
@@ -202,7 +229,7 @@ export default function App() {
               </div>
             </div>
             <div style={{ flex: 1 }}>
-              {view === "dashboard" && <Dashboard ud={ud} setView={setView} />}
+              {view === "dashboard" && <Dashboard ud={ud} setView={setView} onOpenLevelUp={(mode, sl) => setLevelUp({ mode, suggestedLevel: sl })} onDismissLevelUp={onDismissLevelUp} />}
               {view === "chat" && <Chat ud={ud} onMU={onMU} onBE={onBE} onSE={onSE} />}
               {view === "flashcards" && <Flashcards ud={ud} onRate={onCardRate} onBE={onBE} />}
               {view === "scenarios" && <Scenarios ud={ud} onMU={onMU} onBE={onBE} onDone={onScenarioDone} />}
@@ -212,6 +239,16 @@ export default function App() {
             </div>
           </div>
         </div>
+
+        {levelUp && (
+          <LevelUpModal
+            mode={levelUp.mode}
+            currentLevel={ud.skillLevel}
+            suggestedLevel={levelUp.suggestedLevel}
+            onConfirm={onChangeLevel}
+            onClose={() => setLevelUp(null)}
+          />
+        )}
 
         {/* Mobile nav */}
         <div className="mn" style={{ position: "fixed", bottom: 0, left: 0, right: 0, background: C.surface, borderTop: `1px solid ${C.border}`, zIndex: 100, boxShadow: "0 -3px 14px rgba(61,84,80,.08)" }}>
