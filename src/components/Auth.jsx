@@ -66,7 +66,7 @@ export default function Auth({ onAuth }) {
         )}
 
         <label style={{ fontSize: "12px", fontWeight: "700", color: C.sandDeep, display: "block", marginBottom: "5px" }}>PASSWORD</label>
-        <input style={inputStyle({ marginBottom: "20px" })} placeholder="\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022" type="password" value={pw} onChange={(e) => setPw(e.target.value)} onKeyDown={(e) => e.key === "Enter" && go()} />
+        <input style={inputStyle({ marginBottom: "20px" })} placeholder="••••••••" type="password" value={pw} onChange={(e) => setPw(e.target.value)} onKeyDown={(e) => e.key === "Enter" && go()} />
 
         <button className="bt" style={{ width: "100%", padding: "13px", fontSize: "15px", opacity: load ? 0.6 : 1 }} onClick={go}>
           {load ? "Loading\u2026" : mode === "login" ? "Sign in ->" : "Create account ->"}
