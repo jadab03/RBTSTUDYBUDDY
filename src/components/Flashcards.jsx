@@ -47,7 +47,7 @@ export default function Flashcards({ ud, onRate, onBE }) {
           <div style={{ height: "8px", background: C.cream, borderRadius: "999px", overflow: "hidden" }}>
             <div style={{ height: "100%", width: `${(unlockedCount / FLASHCARDS.length) * 100}%`, background: `linear-gradient(90deg,${C.teal},${C.roseDark})`, borderRadius: "999px", transition: "width .5s ease" }} />
           </div>
-          {canUnlockMore && due.length === 0 && <div style={{ fontSize: "12px", color: C.tealDark, marginTop: "8px", fontWeight: "600" }}>{"\u2713"} All caught up \u2014 {BATCH} new cards will unlock soon!</div>}
+          {canUnlockMore && due.length === 0 && <div style={{ fontSize: "12px", color: C.tealDark, marginTop: "8px", fontWeight: "600" }}>{"\u2713"} All caught up — {BATCH} new cards will unlock soon!</div>}
           {canUnlockMore && due.length > 0 && <div style={{ fontSize: "12px", color: C.sandDark, marginTop: "8px" }}>Complete all {due.length} due card{due.length !== 1 ? "s" : ""} to unlock the next batch</div>}
         </div>
 

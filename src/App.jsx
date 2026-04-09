@@ -219,7 +219,7 @@ export default function App() {
             <div className="tb" style={{ background: C.surface, padding: "13px 28px", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: `1px solid ${C.border}`, flexShrink: 0, position: "sticky", top: 0, zIndex: 10 }}>
               <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                 <div style={{ fontSize: "17px", fontWeight: "800", color: C.charcoal, fontFamily: "'Lora',serif" }}>{title}</div>
-                {saving && <div style={{ fontSize: "11px", color: C.sandDark, fontWeight: "600" }}>{"\u{1F4BE}"} Saving\u2026</div>}
+                {saving && <div style={{ fontSize: "11px", color: C.sandDark, fontWeight: "600" }}>{"\u{1F4BE}"} Saving…</div>}
               </div>
               <div onClick={() => { setScreen("auth"); setUd(null); }} style={{ display: "flex", alignItems: "center", gap: "7px", padding: "5px 11px", borderRadius: "20px", background: C.blush, cursor: "pointer", border: `1px solid ${C.rose}` }}>
                 <div style={{ width: "24px", height: "24px", borderRadius: "50%", background: C.rose, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "11px", color: "#fff", fontWeight: "800" }}>

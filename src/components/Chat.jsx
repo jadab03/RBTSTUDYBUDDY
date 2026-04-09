@@ -85,7 +85,7 @@ export default function Chat({ ud, onMU, onBE, onSE }) {
               />
             </div>
           ))}
-          {load && <div style={{ alignSelf: "flex-start", background: C.surface, borderRadius: "14px 14px 14px 3px", padding: "11px 15px", boxShadow: "0 2px 10px rgba(61,84,80,.08)", color: C.sandDark, fontStyle: "italic", fontSize: "14px" }}>Thinking\u2026</div>}
+          {load && <div style={{ alignSelf: "flex-start", background: C.surface, borderRadius: "14px 14px 14px 3px", padding: "11px 15px", boxShadow: "0 2px 10px rgba(61,84,80,.08)", color: C.sandDark, fontStyle: "italic", fontSize: "14px" }}>Thinking…</div>}
           <div ref={bot} />
         </div>
         <div style={{ padding: "11px 24px 14px", background: C.surface, borderTop: `1px solid ${C.border}`, display: "flex", gap: "9px", alignItems: "flex-end" }}>
@@ -94,7 +94,7 @@ export default function Chat({ ud, onMU, onBE, onSE }) {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); } }}
-            placeholder="Ask a question or say 'quiz me on reinforcement'\u2026"
+            placeholder="Ask a question or say 'quiz me on reinforcement'…"
             style={{ flex: 1, padding: "10px 13px", borderRadius: "10px", border: `1.5px solid ${C.border}`, fontSize: "14px", fontFamily: "'Nunito',sans-serif", color: C.charcoal, background: C.alt, resize: "none", maxHeight: "120px", lineHeight: "1.5" }}
           />
           <button

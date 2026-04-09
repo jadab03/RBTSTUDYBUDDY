@@ -45,7 +45,7 @@ export default function ReflectModal({ topics, onClose, onMU, onBE }) {
       <div style={{ background: C.surface, borderRadius: "19px", padding: "28px 24px", width: "100%", maxWidth: "440px", boxShadow: "0 20px 60px rgba(42,36,32,.18)" }}>
         <div style={{ height: "3px", background: `linear-gradient(90deg,${C.teal},${C.rose})`, borderRadius: "2px", marginBottom: "18px" }} />
 
-        {ph === "loading" && <div style={{ textAlign: "center", color: C.sandDark, padding: "16px", fontStyle: "italic" }}>Crafting your reflection prompt\u2026</div>}
+        {ph === "loading" && <div style={{ textAlign: "center", color: C.sandDark, padding: "16px", fontStyle: "italic" }}>Crafting your reflection prompt…</div>}
 
         {(ph === "prompt" || ph === "answering") && (
           <>
@@ -54,7 +54,7 @@ export default function ReflectModal({ topics, onClose, onMU, onBE }) {
             <textarea
               value={ans}
               rows={4}
-              placeholder="Take a moment to reflect\u2026"
+              placeholder="Take a moment to reflect…"
               onChange={(e) => { setAns(e.target.value); if (ph === "prompt") setPh("answering"); }}
               style={{ width: "100%", padding: "10px 12px", borderRadius: "10px", border: `1.5px solid ${C.border}`, fontSize: "14px", fontFamily: "'Nunito',sans-serif", color: C.charcoal, background: C.alt, resize: "vertical", lineHeight: "1.6", marginBottom: "11px" }}
             />

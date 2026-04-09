@@ -120,7 +120,7 @@ export default function Dashboard({ ud, setView, onOpenLevelUp, onDismissLevelUp
           <Card>
             <div style={{ fontSize: "14px", fontWeight: "800", color: C.charcoal, marginBottom: "13px" }}>{"\u{1F4CB}"} Recent Sessions</div>
             {recent.length === 0 ? (
-              <div style={{ fontSize: "13px", color: C.sandDark, fontStyle: "italic" }}>No sessions yet \u2014 start studying!</div>
+              <div style={{ fontSize: "13px", color: C.sandDark, fontStyle: "italic" }}>No sessions yet — start studying!</div>
             ) : (
               recent.map((s, i) => (
                 <div key={i} style={{ paddingBottom: i < recent.length - 1 ? "10px" : 0, marginBottom: i < recent.length - 1 ? "10px" : 0, borderBottom: i < recent.length - 1 ? `1px solid ${C.cream}` : 0 }}>
