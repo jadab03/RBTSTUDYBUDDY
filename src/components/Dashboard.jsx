@@ -1,20 +1,54 @@
 import { C, SKILL_LEVELS, DOMAINS, MILESTONES } from "../data/constants.js";
-import { avgMastery, dueCards, fmtDate } from "../utils/helpers.js";
+import { avgMastery, dueCards, fmtDate, shouldSuggestLevelUp } from "../utils/helpers.js";
 import { Card } from "./ui.jsx";
 
-export default function Dashboard({ ud, setView }) {
+export default function Dashboard({ ud, setView, onOpenLevelUp, onDismissLevelUp }) {
   const { mastery, badges = [], streak = 0, totalSessions = 0, sessionHistory = [], xp = 0, roadmap } = ud;
   const total = avgMastery(mastery);
   const earned = MILESTONES.filter((m) => badges.includes(m.id));
   const recent = sessionHistory.slice(-3).reverse();
   const due = dueCards(ud).length;
+  const suggestedNext = shouldSuggestLevelUp(ud);
+  const suggestedLabel = suggestedNext ? SKILL_LEVELS.find((s) => s.id === suggestedNext)?.label : null;
 
   return (
     <div className="pg" style={{ padding: "24px 28px" }}>
       <div style={{ marginBottom: "20px" }}>
         <div style={{ fontSize: "24px", fontWeight: "800", color: C.charcoal, fontFamily: "'Lora',serif", marginBottom: "3px" }}>Good to see you, {ud.username} {"\u{1F44B}"}</div>
-        <div style={{ fontSize: "13px", color: C.sandDark }}>{SKILL_LEVELS.find((s) => s.id === ud.skillLevel)?.label}</div>
+        <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
+          <div style={{ fontSize: "13px", color: C.sandDark }}>{SKILL_LEVELS.find((s) => s.id === ud.skillLevel)?.label}</div>
+          <span
+            onClick={() => onOpenLevelUp && onOpenLevelUp("manual")}
+            style={{ fontSize: "11px", fontWeight: "700", color: C.tealDark, cursor: "pointer", textDecoration: "underline", textDecorationColor: `${C.teal}80` }}
+          >
+            Change
+          </span>
+        </div>
       </div>
+
+      {suggestedNext && (
+        <Card style={{ marginBottom: "16px", borderLeft: `4px solid ${C.teal}`, background: `linear-gradient(135deg,${C.surface} 0%,${C.mint}30 100%)` }}>
+          <div style={{ display: "flex", gap: "14px", alignItems: "flex-start", flexWrap: "wrap" }}>
+            <div style={{ fontSize: "32px", flexShrink: 0 }}>{"\u{1F389}"}</div>
+            <div style={{ flex: 1, minWidth: "200px" }}>
+              <div style={{ fontSize: "15px", fontWeight: "800", color: C.charcoal, fontFamily: "'Lora',serif", marginBottom: "3px" }}>
+                You{"\u2019"}re crushing it, {ud.username}!
+              </div>
+              <div style={{ fontSize: "13px", color: C.sandDeep, lineHeight: "1.5", marginBottom: "12px" }}>
+                With {total}% overall mastery, you look ready for <strong>{suggestedLabel}</strong>. Want to level up your study focus?
+              </div>
+              <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+                <button className="bt" style={{ padding: "9px 16px", fontSize: "12px" }} onClick={() => onOpenLevelUp && onOpenLevelUp("suggested", suggestedNext)}>
+                  Yes, level me up {"\u2192"}
+                </button>
+                <button className="bg" style={{ padding: "9px 16px", fontSize: "12px" }} onClick={onDismissLevelUp}>
+                  Not yet
+                </button>
+              </div>
+            </div>
+          </div>
+        </Card>
+      )}
 
       <div className="sg" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "12px", marginBottom: "16px" }}>
         {[
