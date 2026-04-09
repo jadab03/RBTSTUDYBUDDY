@@ -204,7 +204,7 @@ export default function Onboarding({ user, onComplete }) {
         <div style={box()}>
           <div style={{ textAlign: "center", padding: "40px 0" }}>
             <div style={{ fontSize: "48px", marginBottom: "16px" }}>{"\u{1F9E0}"}</div>
-            <div style={{ fontSize: "20px", fontWeight: "800", color: C.charcoal, fontFamily: "'Lora',serif", marginBottom: "8px" }}>Analyzing your results\u2026</div>
+            <div style={{ fontSize: "20px", fontWeight: "800", color: C.charcoal, fontFamily: "'Lora',serif", marginBottom: "8px" }}>Analyzing your results…</div>
             <div style={{ fontSize: "14px", color: C.sandDark, lineHeight: "1.6", marginBottom: "20px" }}>Building your personalized study profile from your questionnaire and quiz results</div>
             <div style={{ display: "flex", justifyContent: "center", gap: "6px", flexWrap: "wrap" }}>
               {["Scoring quiz", "Reviewing preferences", "Setting baselines", "Crafting your plan"].map((s, i) => (

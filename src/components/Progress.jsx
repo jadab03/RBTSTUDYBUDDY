@@ -111,7 +111,7 @@ export default function Progress({ ud }) {
       <Card>
         <div style={{ fontSize: "14px", fontWeight: "800", color: C.charcoal, marginBottom: "14px" }}>{"\u{1F4CB}"} Session Log</div>
         {sessionHistory.length === 0
-          ? <div style={{ fontSize: "13px", color: C.sandDark, fontStyle: "italic" }}>No sessions yet \u2014 start studying!</div>
+          ? <div style={{ fontSize: "13px", color: C.sandDark, fontStyle: "italic" }}>No sessions yet — start studying!</div>
           : [...sessionHistory].reverse().slice(0, 10).map((s, i) => (
             <div key={i} style={{ display: "flex", alignItems: "center", gap: "12px", paddingBottom: i < 9 ? "10px" : 0, marginBottom: i < 9 ? "10px" : 0, borderBottom: i < 9 ? `1px solid ${C.cream}` : 0 }}>
               <div style={{ fontSize: "18px", flexShrink: 0 }}>{s.type === "chat" ? "\u{1F4AC}" : s.type === "scenario" ? "\u{1F3AF}" : s.type === "flashcard" ? "\u{1F0CF}" : "\u{1FA9E}"}</div>

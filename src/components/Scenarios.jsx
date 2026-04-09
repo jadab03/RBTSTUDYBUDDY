@@ -57,7 +57,7 @@ function ScenarioCard({ s, done, onMU, onBE, onDone }) {
           <div style={{ fontSize: "14px", color: C.sandDeep, lineHeight: "1.7", marginBottom: "14px", paddingTop: "14px" }}>{s.scenario}</div>
           {!res ? (
             <>
-              <textarea value={ans} onChange={(e) => setAns(e.target.value)} placeholder="Type your answer here\u2026" rows={3} style={{ width: "100%", padding: "10px 13px", borderRadius: "10px", border: `1.5px solid ${C.border}`, fontSize: "14px", fontFamily: "'Nunito',sans-serif", color: C.charcoal, background: C.alt, resize: "vertical", lineHeight: "1.6", marginBottom: "10px" }} />
+              <textarea value={ans} onChange={(e) => setAns(e.target.value)} placeholder="Type your answer here…" rows={3} style={{ width: "100%", padding: "10px 13px", borderRadius: "10px", border: `1.5px solid ${C.border}`, fontSize: "14px", fontFamily: "'Nunito',sans-serif", color: C.charcoal, background: C.alt, resize: "vertical", lineHeight: "1.6", marginBottom: "10px" }} />
               <button className="bt" style={{ padding: "9px 18px", fontSize: "13px", opacity: ans.trim() && !load ? 1 : 0.4 }} onClick={submit}>
                 {load ? "Evaluating\u2026" : "Submit Answer"}
               </button>

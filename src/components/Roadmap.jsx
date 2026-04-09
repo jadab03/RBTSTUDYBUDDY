@@ -61,7 +61,7 @@ export default function Roadmap({ ud, onSave, onBE }) {
         <button className="bt" style={{ width: "100%", padding: "13px", fontSize: "15px", opacity: gen ? 0.6 : 1 }} onClick={generate} disabled={gen}>
           {gen ? "Building your roadmap\u2026" : "Generate My Roadmap \u2192"}
         </button>
-        {gen && <div style={{ textAlign: "center", fontSize: "13px", color: C.sandDark, marginTop: "12px", fontStyle: "italic" }}>Analyzing your mastery and crafting a personalized plan\u2026</div>}
+        {gen && <div style={{ textAlign: "center", fontSize: "13px", color: C.sandDark, marginTop: "12px", fontStyle: "italic" }}>Analyzing your mastery and crafting a personalized plan…</div>}
       </div>
     );
 
@@ -88,7 +88,7 @@ export default function Roadmap({ ud, onSave, onBE }) {
           <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
             {rm.priorityDomains.map((id) => (
               <span key={id} style={{ padding: "5px 12px", borderRadius: "20px", fontSize: "12px", fontWeight: "700", background: `${dC(id)}18`, color: dC(id), border: `1px solid ${dC(id)}40` }}>
-                {dL(id)} \u2014 {ud.mastery[id]}%
+                {dL(id)} — {ud.mastery[id]}%
               </span>
             ))}
           </div>
