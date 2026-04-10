@@ -11,6 +11,7 @@ import Dashboard from "./components/Dashboard.jsx";
 import Chat from "./components/Chat.jsx";
 import Flashcards from "./components/Flashcards.jsx";
 import Scenarios from "./components/Scenarios.jsx";
+import PracticeQuiz from "./components/PracticeQuiz.jsx";
 import Roadmap from "./components/Roadmap.jsx";
 import Progress from "./components/Progress.jsx";
 import MasteryTracker from "./components/MasteryTracker.jsx";
@@ -233,6 +234,7 @@ export default function App() {
               {view === "chat" && <Chat ud={ud} onMU={onMU} onBE={onBE} onSE={onSE} />}
               {view === "flashcards" && <Flashcards ud={ud} onRate={onCardRate} onBE={onBE} />}
               {view === "scenarios" && <Scenarios ud={ud} onMU={onMU} onBE={onBE} onDone={onScenarioDone} />}
+              {view === "practice" && <PracticeQuiz ud={ud} onMU={onMU} onBE={onBE} />}
               {view === "roadmap" && <Roadmap ud={ud} onSave={onRoadmapSave} onBE={onBE} />}
               {view === "progress" && <Progress ud={ud} />}
               {view === "mastery" && <MasteryTracker mastery={ud.mastery} />}

@@ -52,6 +52,7 @@ export const NAV = [
   { id: "chat",       label: "Chat",       icon: "\u{1F4AC}" },
   { id: "flashcards", label: "Flashcards", icon: "\u{1F0CF}" },
   { id: "scenarios",  label: "Scenarios",  icon: "\u{1F3AF}" },
+  { id: "practice",   label: "Practice",   icon: "\u{1F4DD}" },
   { id: "roadmap",    label: "Roadmap",    icon: "\u{1F5FA}\uFE0F" },
   { id: "progress",   label: "Progress",   icon: "\u{1F4CA}" },
 ];
