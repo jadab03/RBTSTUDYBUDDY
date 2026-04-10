@@ -112,7 +112,14 @@ export default function Flashcards({ ud, onRate, onBE }) {
         <div className="flip-scene" style={{ marginBottom: "24px" }} onClick={() => setFlipped((f) => !f)}>
           <div className={`flip-card${flipped ? " flipped" : ""}`} style={{ height: "260px", cursor: "pointer" }}>
             <div className="flip-face" style={{ position: "absolute", inset: 0, background: C.surface, borderRadius: "18px", padding: "32px 28px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", boxShadow: "0 4px 24px rgba(61,84,80,.10)", border: `1.5px solid ${C.border}` }}>
-              <div style={{ fontSize: "11px", fontWeight: "700", color: dc, textTransform: "uppercase", letterSpacing: "0.6px", marginBottom: "20px", padding: "3px 10px", borderRadius: "20px", background: `${dc}15`, border: `1px solid ${dc}30` }}>{DL[card.domain] || card.domain}</div>
+              <div style={{ display: "flex", gap: "6px", marginBottom: "20px", flexWrap: "wrap", justifyContent: "center" }}>
+                <div style={{ fontSize: "11px", fontWeight: "700", color: dc, textTransform: "uppercase", letterSpacing: "0.6px", padding: "3px 10px", borderRadius: "20px", background: `${dc}15`, border: `1px solid ${dc}30` }}>{DL[card.domain] || card.domain}</div>
+                {Array.isArray(card.levels) && card.levels.length > 0 && card.levels.length < 4 && (
+                  <div style={{ fontSize: "10px", fontWeight: "700", color: C.sandDeep, textTransform: "uppercase", letterSpacing: "0.5px", padding: "3px 9px", borderRadius: "20px", background: C.alt, border: `1px solid ${C.border}` }}>
+                    {card.levels.includes("training") ? "All Levels" : "Competency+"}
+                  </div>
+                )}
+              </div>
               <div style={{ fontSize: "18px", fontWeight: "700", color: C.charcoal, textAlign: "center", lineHeight: "1.5", fontFamily: "'Lora',serif" }}>{card.front}</div>
               <div style={{ fontSize: "12px", color: C.sandDark, marginTop: "24px", fontWeight: "600" }}>Tap to reveal answer</div>
             </div>
