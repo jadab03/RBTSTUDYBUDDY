@@ -76,7 +76,7 @@ function ScenarioCard({ s, done, onMU, onBE, onDone }) {
           </div>
           <div style={{ fontSize: "14px", fontWeight: "700", color: C.charcoal, fontFamily: "'Lora',serif" }}>{s.title}</div>
         </div>
-        <div style={{ fontSize: "18px", color: C.sandDark, transition: "transform .2s", transform: open ? "rotate(180deg)" : "none" }}>v</div>
+        <div style={{ fontSize: "14px", color: C.sandDark, transition: "transform .2s", transform: open ? "rotate(180deg)" : "none" }}>&#9662;</div>
       </div>
       {open && (
         <div style={{ padding: "0 18px 18px", borderTop: `1px solid ${C.cream}` }}>
