@@ -175,7 +175,7 @@ export default function Scenarios({ ud, onMU, onBE, onDone }) {
       <div style={{ marginBottom: "16px" }}>
         <div style={{ fontSize: "22px", fontWeight: "800", color: C.charcoal, fontFamily: "'Lora',serif", marginBottom: "3px" }}>Real-World Scenarios</div>
         <div style={{ fontSize: "13px", color: C.sandDark }}>
-          {doneInLevel}/{levelFiltered.length} completed {"\u00B7"} {allowed.length === 1 ? "Multiple choice \u2014 matched to your level" : "Matched to your level"}
+          {doneInLevel}/{levelFiltered.length} completed
         </div>
       </div>
       <div style={{ marginBottom: "16px", display: "flex", flexDirection: "column", gap: "8px" }}>

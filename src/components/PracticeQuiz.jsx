@@ -58,7 +58,7 @@ export default function PracticeQuiz({ ud, onMU, onBE }) {
       <div className="pg" style={{ padding: "24px 28px", maxWidth: "680px", margin: "0 auto" }}>
         <div style={{ marginBottom: "20px" }}>
           <div style={{ fontSize: "22px", fontWeight: "800", color: C.charcoal, fontFamily: "'Lora',serif", marginBottom: "3px" }}>Practice Quiz</div>
-          <div style={{ fontSize: "13px", color: C.sandDark }}>Multiple-choice questions matched to your level</div>
+          <div style={{ fontSize: "13px", color: C.sandDark }}>Test your knowledge with multiple-choice questions</div>
         </div>
 
         <Card style={{ marginBottom: "16px", borderLeft: `4px solid ${C.teal}` }}>
